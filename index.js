@@ -1,18 +1,18 @@
 var http = require('http');
 var httpProxy = require('http-proxy');
 
-//
-// Just set up your options...
-//
-var options = {
-    hostnameOnly: true,
-    router: {
-        'tlks.io': '127.0.0.1:9000',
-        'api.tlks.io': '127.0.0.1:9001'
-    }
-};
+var proxy = httpProxy.createProxy();
+require('http').createServer(function(req, res) {
+    var url = "http://thereisnothinghere.io";
 
-//
-// ...and then pass them in when you create your proxy.
-//
-var proxyServer = httpProxy.createServer(options).listen(80);
+    var host = req.headers.host;
+
+    if (host==="tlks.io") {
+        url = 'http://localhost:9001';
+    } else {
+        url = 'http://localhost:9002';
+    }
+    proxy.web(req, res, {
+        target: url
+    });
+}).listen(80);

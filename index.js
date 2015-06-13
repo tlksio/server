@@ -6,9 +6,10 @@ var morgan = require('morgan');
 var httpProxy = require('http-proxy');
 
 var accessLogStream = FileStreamRotator.getStream({
-    filename: __dirname + '/log/access.log',
+    filename: __dirname + '/log/access.%DATE%.log',
     frequency: 'daily',
-    verbose: false
+    verbose: false,
+    date_format: "YYYY-MM-DD"
 });
 var logger = morgan('combined', {
     stream: accessLogStream
@@ -37,6 +38,7 @@ http.createServer(function(req, res) {
                 break;
             default:
                 console.log("ERROR: not allowed host", host);
+                res.end();
                 break;
         }
     });

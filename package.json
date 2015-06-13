@@ -1,0 +1,34 @@
+{
+    "name": "server",
+    "version": "0.1.1",
+    "description": "tlks.io app server",
+    "main": "index.js",
+    "scripts": {
+        "test": "make all"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tlksio/server.git"
+    },
+    "keywords": [
+        "tlks",
+        "server",
+        "proxy",
+        "app"
+    ],
+    "author": "Raül Pérez <repejota@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tlksio/server/issues"
+    },
+    "homepage": "https://github.com/tlksio/server",
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-jshint": "^1.11.0",
+        "jshint-reporter-jscs": "^0.1.0",
+        "jshint-stylish": "^2.0.0"
+    },
+    "dependencies": {
+        "http-proxy": "^1.11.1"
+    }
+}

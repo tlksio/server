@@ -38,9 +38,8 @@ http.createServer(function(req, res) {
                 break;
             default:
                 console.log('ERROR: not allowed host', host);
-                res.status(418);
-                res.send('I\'m a teapot!');
-                res.end();
+                res.statusCode = 418;
+                res.end("I'm a teapot!");
                 break;
         }
     });

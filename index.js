@@ -24,20 +24,22 @@ http.createServer(function(req, res) {
         var url;
         switch (host) {
             case "tlks.io":
-            case "www.tlks.io":
+            case 'www.tlks.io':
                 url = 'http://localhost:9001';
                 proxy.web(req, res, {
                     target: url
                 });
                 break;
-            case "api.tlks.io":
+            case 'api.tlks.io':
                 url = 'http://localhost:9002';
                 proxy.web(req, res, {
                     target: url
                 });
                 break;
             default:
-                console.log("ERROR: not allowed host", host);
+                console.log('ERROR: not allowed host', host);
+                res.status(418);
+                res.send('I\'m a teapot!');
                 res.end();
                 break;
         }
